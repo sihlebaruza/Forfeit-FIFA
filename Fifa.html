@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA Tournament Log</title>
+    <style>
+        /* Your CSS styles here (unchanged) */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FIFA Tournament Log</h1>
+    </header>
+    <main>
+        <table id="logTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Team 1</th>
+                    <th>Team 2</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="logBody">
+                <!-- Log entries will go here -->
+            </tbody>
+        </table>
+
+        <form id="resultForm">
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+            
+            <label for="team1">Team 1:</label>
+            <input type="text" id="team1" required>
+
+            <label for="team2">Team 2:</label>
+            <input type="text" id="team2" required>
+
+            <label for="score">Score:</label>
+            <input type="text" id="score" required>
+
+            <button type="button" onclick="addMatchResult()">Submit Result</button>
+        </form>
+    </main>
+
+    <script>
+        function addMatchResult() {
+            // Get input values
+            const date = document.getElementById('date').value;
+            const team1 = document.getElementById('team1').value;
+            const team2 = document.getElementById('team2').value;
+            const score = document.getElementById('score').value;
+
+            // Create a new table row
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${date}</td>
+                <td>${team1}</td>
+                <td>${team2}</td>
+                <td>${score}</td>
+            `;
+
+            // Append the new row to the table body
+            document.getElementById('logBody').appendChild(newRow);
+
+            // Clear form inputs
+            document.getElementById('date').value = '';
+            document.getElementById('team1').value = '';
+            document.getElementById('team2').value = '';
+            document.getElementById('score').value = '';
+        }
+    </script>
+</body>
+</html>
